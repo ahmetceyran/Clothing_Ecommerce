@@ -7,114 +7,28 @@
             <a href="products.html">view all products <i class="fa fa-angle-right"></i></a>
           </div>
         </div>
+
+        @foreach ($product as $products)
+
         <div class="col-md-4">
           <div class="product-item">
-            <a href="#"><img src="assets/images/product_01.jpg" alt=""></a>
+            <a href="#"><img style="height: 250px; width: 350px; margin: auto;" src="product/{{$products->image}}" alt=""></a>
             <div class="down-content">
-              <a href="#"><h4>Tittle goes here</h4></a>
-              <h6>$25.75</h6>
-              <p>Lorem ipsume dolor sit amet, adipisicing elite. Itaque, corporis nulla aspernatur.</p>
-              <ul class="stars">
-                <li><i class="fa fa-star"></i></li>
-                <li><i class="fa fa-star"></i></li>
-                <li><i class="fa fa-star"></i></li>
-                <li><i class="fa fa-star"></i></li>
-                <li><i class="fa fa-star"></i></li>
-              </ul>
-              <span>Reviews (24)</span>
+              <a href="#"><h4>{{$products->title}}</h4></a>
+              <h6>${{$products->price}}</h6>
+              <p>{{$products->description}}</p>
             </div>
           </div>
         </div>
-        <div class="col-md-4">
-          <div class="product-item">
-            <a href="#"><img src="assets/images/product_02.jpg" alt=""></a>
-            <div class="down-content">
-              <a href="#"><h4>Tittle goes here</h4></a>
-              <h6>$30.25</h6>
-              <p>Lorem ipsume dolor sit amet, adipisicing elite. Itaque, corporis nulla aspernatur.</p>
-              <ul class="stars">
-                <li><i class="fa fa-star"></i></li>
-                <li><i class="fa fa-star"></i></li>
-                <li><i class="fa fa-star"></i></li>
-                <li><i class="fa fa-star"></i></li>
-                <li><i class="fa fa-star"></i></li>
-              </ul>
-              <span>Reviews (21)</span>
-            </div>
-          </div>
+
+        @endforeach
+
+        <div class="d-flex justify-content-center">
+
+            {!! $product->links() !!}
+
         </div>
-        <div class="col-md-4">
-          <div class="product-item">
-            <a href="#"><img src="assets/images/product_03.jpg" alt=""></a>
-            <div class="down-content">
-              <a href="#"><h4>Tittle goes here</h4></a>
-              <h6>$20.45</h6>
-              <p>Sixteen Clothing is free CSS template provided by TemplateMo.</p>
-              <ul class="stars">
-                <li><i class="fa fa-star"></i></li>
-                <li><i class="fa fa-star"></i></li>
-                <li><i class="fa fa-star"></i></li>
-                <li><i class="fa fa-star"></i></li>
-                <li><i class="fa fa-star"></i></li>
-              </ul>
-              <span>Reviews (36)</span>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="product-item">
-            <a href="#"><img src="assets/images/product_04.jpg" alt=""></a>
-            <div class="down-content">
-              <a href="#"><h4>Tittle goes here</h4></a>
-              <h6>$15.25</h6>
-              <p>Lorem ipsume dolor sit amet, adipisicing elite. Itaque, corporis nulla aspernatur.</p>
-              <ul class="stars">
-                <li><i class="fa fa-star"></i></li>
-                <li><i class="fa fa-star"></i></li>
-                <li><i class="fa fa-star"></i></li>
-                <li><i class="fa fa-star"></i></li>
-                <li><i class="fa fa-star"></i></li>
-              </ul>
-              <span>Reviews (48)</span>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="product-item">
-            <a href="#"><img src="assets/images/product_05.jpg" alt=""></a>
-            <div class="down-content">
-              <a href="#"><h4>Tittle goes here</h4></a>
-              <h6>$12.50</h6>
-              <p>Lorem ipsume dolor sit amet, adipisicing elite. Itaque, corporis nulla aspernatur.</p>
-              <ul class="stars">
-                <li><i class="fa fa-star"></i></li>
-                <li><i class="fa fa-star"></i></li>
-                <li><i class="fa fa-star"></i></li>
-                <li><i class="fa fa-star"></i></li>
-                <li><i class="fa fa-star"></i></li>
-              </ul>
-              <span>Reviews (16)</span>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="product-item">
-            <a href="#"><img src="assets/images/product_06.jpg" alt=""></a>
-            <div class="down-content">
-              <a href="#"><h4>Tittle goes here</h4></a>
-              <h6>$22.50</h6>
-              <p>Lorem ipsume dolor sit amet, adipisicing elite. Itaque, corporis nulla aspernatur.</p>
-              <ul class="stars">
-                <li><i class="fa fa-star"></i></li>
-                <li><i class="fa fa-star"></i></li>
-                <li><i class="fa fa-star"></i></li>
-                <li><i class="fa fa-star"></i></li>
-                <li><i class="fa fa-star"></i></li>
-              </ul>
-              <span>Reviews (32)</span>
-            </div>
-          </div>
-        </div>
+
       </div>
     </div>
   </div>

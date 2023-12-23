@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -22,7 +23,8 @@ class HomeController extends Controller
         else
         {
 
-            return view('user.home');
+            $product = Product::paginate(3);
+            return view('user.home', compact('product'));
 
         }
 
@@ -40,7 +42,8 @@ class HomeController extends Controller
         else
         {
 
-            return view('user.home');
+            $product = Product::paginate(3);
+            return view('user.home', compact('product'));
 
         }
 
