@@ -49,4 +49,44 @@ class AdminController extends Controller
 
     }
 
+    public function show_products()
+    {
+
+        if(Auth::id())
+        {
+
+            $product=product::all();
+            return view('admin.show_products', compact('product'));
+
+        }
+
+        else
+        {
+            return redirect('login');
+        }
+
+    }
+
+    public function delete_product($id)
+    {
+
+        if(Auth::id())
+        {
+
+            $product=product::find($id);
+
+        $product->delete();
+
+        return redirect()->back()->with('message', 'Product Deleted Successfully');
+
+        }
+
+        else
+        {
+            return redirect('login');
+        }
+
+
+    }
+
 }
