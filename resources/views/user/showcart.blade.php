@@ -26,6 +26,42 @@ https://templatemo.com/tm-546-sixteen-clothing
     <link rel="stylesheet" href="assets/css/templatemo-sixteen.css">
     <link rel="stylesheet" href="assets/css/owl.css">
 
+    <style type="text/css">
+
+        .center
+        {
+            margin: auto;
+            width: 50%;
+            text-align: center;
+            padding: 100px;
+        }
+
+        table,th,td
+        {
+            border: 1px solid gray;
+        }
+
+        .th_deg
+        {
+            font-size: 20px;
+            padding: 5px;
+            background-color: rgb(247, 98, 81);
+        }
+
+        .img_size
+        {
+            width: 150px;
+            height: 100px;
+        }
+
+        .total_price
+        {
+            font-size: 20px;
+            padding: 40px;
+        }
+
+    </style>
+
   </head>
 
   <body>
@@ -109,100 +145,78 @@ https://templatemo.com/tm-546-sixteen-clothing
 
     </header>
 
-    <!-- Page Content -->
-    <!-- Banner Starts Here -->
-    <div class="banner header-text">
-      <div class="owl-banner owl-carousel">
-        <div class="banner-item-01">
-          <div class="text-content">
-            <h4>Best Offer</h4>
-            <h2>New Arrivals On Sale</h2>
-          </div>
-        </div>
-        <div class="banner-item-02">
-          <div class="text-content">
-            <h4>Flash Deals</h4>
-            <h2>Get your best products</h2>
-          </div>
-        </div>
-        <div class="banner-item-03">
-          <div class="text-content">
-            <h4>Last Minute</h4>
-            <h2>Grab last minute deals</h2>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- Banner Ends Here -->
+    <body>
 
-    @include('user.product')
+        <div class="hero_area">
+            <!-- header section strats -->
+            <!-- end header section -->
 
-    <div class="best-features">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12">
-            <div class="section-heading">
-              <h2>About Sixteen Clothing</h2>
+
+            @if(session()->has('message'))
+
+            <div class="alert alert-success">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">x</button>
+                {{session()->get('message')}}
+
             </div>
-          </div>
-          <div class="col-md-6">
-            <div class="left-content">
-              <h4>Looking for the best products?</h4>
-              <p><a rel="nofollow" href="https://templatemo.com/tm-546-sixteen-clothing" target="_parent">This template</a> is free to use for your business websites. However, you have no permission to redistribute the downloadable ZIP file on any template collection website. <a rel="nofollow" href="https://templatemo.com/contact">Contact us</a> for more info.</p>
-              <ul class="featured-list">
-                <li><a href="#">Lorem ipsum dolor sit amet</a></li>
-                <li><a href="#">Consectetur an adipisicing elit</a></li>
-                <li><a href="#">It aquecorporis nulla aspernatur</a></li>
-                <li><a href="#">Corporis, omnis doloremque</a></li>
-                <li><a href="#">Non cum id reprehenderit</a></li>
-              </ul>
-              <a href="about.html" class="filled-button">Read More</a>
-            </div>
-          </div>
-          <div class="col-md-6">
-            <div class="right-image">
-              <img src="assets/images/feature-image.jpg" alt="">
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+
+            @endif
 
 
-    <div class="call-to-action">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12">
-            <div class="inner-content">
-              <div class="row">
-                <div class="col-md-8">
-                  <h4>Creative &amp; Unique <em>Sixteen</em> Products</h4>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Itaque corporis amet elite author nulla.</p>
-                </div>
-                <div class="col-md-4">
-                  <a href="#" class="filled-button">Purchase Now</a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+
+         <div class="center">
+
+           <table>
+
+               <tr>
+                   <th class="th_deg">Product Title</th>
+                   <th class="th_deg">Product Quantity</th>
+                   <th class="th_deg">Price</th>
+                   <th class="th_deg">Action</th>
+               </tr>
+
+               <?php $totalprice=0 ?>
+
+              @foreach ($cart as $cart)
+
+               <tr>
+
+                   <td>{{$cart->product_title}}</td>
+                   <td>{{$cart->quantity}}</td>
+                   <td>${{$cart->price}}</td>
+                   <td>
+                       <a class="btn btn-danger" onclick="return confirm('Are You Sure?')" href="{{url('remove_cart',$cart->id)}}">Remove</a>
+                   </td>
+
+               </tr>
+
+               <?php $totalprice=$totalprice + $cart->price ?>
+
+               @endforeach
+
+           </table>
+
+           <div>
+
+               <h1 class="total_price">Total Price :  ${{$totalprice}}</h1>
+
+           </div>
+
+           <div>
+
+               <h1 style="font-size: 25px;, padding-bottom: 15px;">Proceed to Order</h1>
+
+               <a href="{{url('cash_order')}}" class="btn btn-danger">Cash On Delivery</a>
+
+               <a href="{{url('stripe', $totalprice)}}" class="btn btn-danger">Pay Using Card</a>
+
+           </div>
 
 
-    <footer>
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12">
-            <div class="inner-content">
-              <p>Copyright &copy; 2020 Sixteen Clothing Co., Ltd.
+         </div>
 
-            - Design: <a rel="nofollow noopener" href="https://templatemo.com" target="_blank">TemplateMo</a></p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </footer>
+    </body>
+
 
 
     <!-- Bootstrap core JavaScript -->

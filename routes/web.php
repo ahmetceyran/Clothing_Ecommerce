@@ -45,3 +45,5 @@ Route::post('/update_product_confirm/{id}', [AdminController::class, 'update_pro
 Route::get('/search', [HomeController::class, 'search']);
 
 Route::post('/addcart/{id}', [HomeController::class, 'addcart']);
+
+Route::get('/show_cart', [HomeController::class, 'show_cart']);
