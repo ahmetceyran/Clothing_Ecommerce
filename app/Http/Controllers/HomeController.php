@@ -89,7 +89,7 @@ class HomeController extends Controller
             $cart->phone = $user->phone;
             $cart->address = $user->address;
             $cart->product_title = $product->title;
-            $cart->price = $product->price;
+            $cart->price = $product->price * $request->quantity;
             $cart->quantity = $request->quantity;
 
             $cart->save();
@@ -123,6 +123,15 @@ class HomeController extends Controller
             return redirect('login');
         }
 
+    }
+
+    public function remove_cart($id)
+    {
+        $cart=cart::find($id);
+
+        $cart->delete();
+
+        return redirect()->back()->with('message', 'Product Removed Successfully!');
     }
 
 }
