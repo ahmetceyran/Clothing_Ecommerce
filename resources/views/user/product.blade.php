@@ -28,7 +28,19 @@
               <a href="#"><h4>{{$products->title}}</h4></a>
               <h6>${{$products->price}}</h6>
               <p>{{$products->description}}</p>
-              <a class="btn btn-primary" href="#">Add Cart</a>
+
+              <form action="{{url('addcart', $products->id)}}" method="POST">
+
+                @csrf
+
+                <input type="number" value="1" min="1" class="form-control" style="width: 100px;" name="quantity">
+
+                <br>
+
+                <input class="btn btn-primary" style="background-color: rgb(43, 43, 236)" type="submit" value="Add Cart">
+
+              </form>
+
             </div>
           </div>
         </div>
