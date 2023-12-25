@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\order;
 use App\Models\product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -145,6 +146,51 @@ class AdminController extends Controller
         {
             return redirect('login');
         }
+
+    }
+
+    public function orders()
+    {
+
+        if(Auth::id())
+        {
+
+            $order=order::all();
+
+
+        return view('admin.orders', compact('order'));
+
+
+        }
+
+        else
+        {
+            return redirect('login');
+        }
+
+    }
+
+    public function delivered($id)
+    {
+
+        if(Auth::id())
+        {
+
+            $order=order::find($id);
+
+            $order->status="delivered";
+
+            $order->save();
+
+            return redirect()->back()->with('message', 'Product Status Changed to Delivered Successfully');
+
+        }
+
+        else
+        {
+            return redirect('login');
+        }
+
 
     }
 
