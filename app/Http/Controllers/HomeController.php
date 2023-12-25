@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\cart;
+use App\Models\order;
 use App\Models\product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -132,6 +133,40 @@ class HomeController extends Controller
         $cart->delete();
 
         return redirect()->back()->with('message', 'Product Removed Successfully!');
+    }
+
+    public function cash_order()
+    {
+        $user=Auth::user();
+
+        $user_phone=$user->phone;
+
+        $data=cart::where('phone','=',$user_phone)->get();
+
+        foreach($data as $data)
+        {
+            $order=new order;
+
+            $order->name=$data->name;
+            $order->phone=$data->phone;
+            $order->address=$data->address;
+            $order->product_name=$data->product_title;
+            $order->price=$data->price;
+            $order->quantity=$data->quantity;
+            $order->status='not delivered';
+
+            $order->save();
+
+
+            $cart_id=$data->id;
+            $cart=cart::find($cart_id);
+            $cart->delete();
+
+        }
+
+        return redirect()->back()->with('message', 'Your order has been received. We will connect with you soon :)');
+
+
     }
 
 }

@@ -87,7 +87,7 @@ https://templatemo.com/tm-546-sixteen-clothing
           <div id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
               <li class="nav-item active">
-                <a class="nav-link" href="index.html">Home
+                <a class="nav-link" href="{{url('redirect')}}">Home
                   <span class="sr-only">(current)</span>
                 </a>
               </li>
@@ -206,9 +206,7 @@ https://templatemo.com/tm-546-sixteen-clothing
 
                <h1 style="font-size: 25px;, padding-bottom: 15px;">Proceed to Order</h1>
 
-               <a href="{{url('cash_order')}}" class="btn btn-danger">Cash On Delivery</a>
-
-               <a href="{{url('stripe', $totalprice)}}" class="btn btn-danger">Pay Using Card</a>
+               <a href="{{url('cash_order')}}" class="btn btn-danger">Confirm Order</a>
 
            </div>
 

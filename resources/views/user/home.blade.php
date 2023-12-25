@@ -51,7 +51,7 @@ https://templatemo.com/tm-546-sixteen-clothing
           <div id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
               <li class="nav-item active">
-                <a class="nav-link" href="index.html">Home
+                <a class="nav-link" href="{{url('redirect')}}">Home
                   <span class="sr-only">(current)</span>
                 </a>
               </li>
